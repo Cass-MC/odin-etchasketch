@@ -9,7 +9,7 @@ function createSquare() {
 
 function createRow() {
     const row = document.createElement("div");
-    row.setAttribute("style","display: flex; justify-content: center; background-color: green;");
+    row.setAttribute("style","display: flex; justify-content: center;");
 
     for (let i = 0; i < 16; i++) {
         const square = createSquare();
@@ -22,7 +22,7 @@ function createRow() {
 function createGrid() {
     const attachGrid = document.getElementById("attachGrid");
     const grid = document.createElement("div");
-    grid.setAttribute("style", "display: flex; flex-direction: column; background-color: orange;")
+    grid.setAttribute("style", "display: flex; flex-direction: column;")
     
     for (let i = 0; i < 16; i++) {
         const row = createRow();
@@ -32,4 +32,14 @@ function createGrid() {
     attachGrid.appendChild(grid);
 }
 
+function askNewGrid() {
+    const newGridBtn = document.getElementById("newGridBtn");
+    let numberIn = "";
+    newGridBtn.addEventListener("click", () => {
+        numberIn = prompt("How many squares?");
+    })
+    
+}
+
+askNewGrid();
 createGrid();
