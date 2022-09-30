@@ -19,10 +19,11 @@ function createRow() {
     return row;
 }
 
-function createGrid() {
+function createGrid(numberInput) {
     const attachGrid = document.getElementById("attachGrid");
     const grid = document.createElement("div");
     grid.setAttribute("style", "display: flex; flex-direction: column; align-items: center; height: 560px;")
+    grid.setAttribute("id","gridDiv");
     
     for (let i = 0; i < 16; i++) {
         const row = createRow();
@@ -34,11 +35,17 @@ function createGrid() {
 
 function askNewGrid() {
     const newGridBtn = document.getElementById("newGridBtn");
-    let numberIn = "";
+    let numberInput = "";
     newGridBtn.addEventListener("click", () => {
-        numberIn = prompt("How many squares?");
+        numberInput = prompt("How many squares?");
+        clearGrid();
     })
-    
+}
+
+function clearGrid() {
+    const attachGrid = document.getElementById("attachGrid");
+    const grid = document.getElementById("gridDiv");
+    attachGrid.removeChild(grid);
 }
 
 askNewGrid();
