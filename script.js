@@ -7,11 +7,11 @@ function createSquare() {
     return square;
 }
 
-function createRow() {
+function createRow(numOfSquares = 16) {
     const row = document.createElement("div");
     row.setAttribute("style","display: flex; justify-content: center; width: 560px; flex: 1 1 auto;");
 
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < numOfSquares; i++) {
         const square = createSquare();
         row.appendChild(square);
     }
@@ -19,14 +19,14 @@ function createRow() {
     return row;
 }
 
-function createGrid(numberInput) {
+function createGrid(numOfSquares = 16) {
     const attachGrid = document.getElementById("attachGrid");
     const grid = document.createElement("div");
     grid.setAttribute("style", "display: flex; flex-direction: column; align-items: center; height: 560px;")
     grid.setAttribute("id","gridDiv");
     
-    for (let i = 0; i < 16; i++) {
-        const row = createRow();
+    for (let i = 0; i < numOfSquares; i++) {
+        const row = createRow(numOfSquares);
         grid.appendChild(row);
     }
 
@@ -38,7 +38,9 @@ function askNewGrid() {
     let numberInput = "";
     newGridBtn.addEventListener("click", () => {
         numberInput = prompt("How many squares?");
+        if (numberInput > 100) { numberInput = 100; }
         clearGrid();
+        createGrid(numberInput);
     })
 }
 
